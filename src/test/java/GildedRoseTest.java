@@ -62,7 +62,7 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(23, app.items[0].quality);
-        assertEquals(23, app.items[0].quality);
+        assertEquals(23, app.items[1].quality);
     }
 
     @Test
