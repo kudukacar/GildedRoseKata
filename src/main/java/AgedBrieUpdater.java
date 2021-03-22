@@ -1,4 +1,5 @@
 public class AgedBrieUpdater implements Updateable{
+
     @Override
     public void update(Item item) {
         item.sellIn -= 1;
