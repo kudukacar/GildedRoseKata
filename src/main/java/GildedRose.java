@@ -1,12 +1,8 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-
 public class GildedRose {
-    private final HashMap<String, Updateable> updaters;
+    private final Updaters updaters;
     public Item[] items;
 
-    public GildedRose(Item[] items, HashMap<String, Updateable> updaters) {
+    public GildedRose(Item[] items, Updaters updaters) {
 
         this.items = items;
         this.updaters = updaters;
@@ -14,7 +10,7 @@ public class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            updaters.get(item.name).update(item);
+            updaters.update(item);
         }
     }
 }

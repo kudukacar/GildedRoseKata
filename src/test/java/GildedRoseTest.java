@@ -1,21 +1,19 @@
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
     @Test
-    void gildedRoseUpdatesEachItemWithTheAppropriateUpdater() {
+    void gildedRoseUpdatesEachItemWithTheUpdaters() {
         String brieItemName = "Brie";
         String baguetteItemName = "Baguette";
         Item brieItem = new Item(brieItemName, 0, 0);
         Item baguetteItem = new Item(baguetteItemName, 0, 0);
         Item[] items = new Item[] { brieItem, baguetteItem };
-        HashMap<String, Updateable> updaters = new HashMap<String, Updateable>();
-        updaters.put(brieItemName, new BrieUpdater());
-        updaters.put(baguetteItemName, new BreadUpdater());
+        Updaters updaters = new Updaters.Builder()
+                .addUpdater(brieItemName, new BrieUpdater())
+                .addUpdater(baguetteItemName, new BreadUpdater())
+                .build();
         GildedRose app = new GildedRose(items, updaters);
         app.updateQuality();
         assertEquals(1, brieItem.quality);

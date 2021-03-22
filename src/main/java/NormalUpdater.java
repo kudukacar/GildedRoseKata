@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class NormalUpdater implements Updateable{
     @Override
     public void update(Item item) {
