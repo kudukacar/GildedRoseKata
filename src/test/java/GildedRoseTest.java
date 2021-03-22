@@ -76,46 +76,6 @@ class GildedRoseTest {
     }
 
     @Test
-    void agedBrieQualityMaxIs50() {
-        Item[] items = new Item[] {
-                new Item("Aged Brie", 0, 50),
-        };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals(50, app.items[0].quality);
-    }
-
-    @Test
-    void agedBrieQualityIncreasesByOneWhenSellInGreaterThanOrEqualToZero() {
-        Item[] items = new Item[] {
-                new Item("Aged Brie", 1, 20),
-        };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals(21, app.items[0].quality);
-    }
-
-    @Test
-    void agedBrieQualityIncreasesByTwoWhenLessThanZero() {
-        Item[] items = new Item[] {
-                new Item("Aged Brie", 0, 20),
-        };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals(22, app.items[0].quality);
-    }
-
-    @Test
-    void agedBrieSellInDecreasesByOne() {
-        Item[] items = new Item[] {
-                new Item("Aged Brie", 0, 20),
-        };
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals(-1, app.items[0].sellIn);
-    }
-
-    @Test
     void normalItemQualityMinIsZero() {
         Item[] items = new Item[] {
                 new Item("An old sword", 0, 0)
