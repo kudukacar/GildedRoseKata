@@ -1,8 +1,13 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class NormalUpdaterTest {
+
     @Test
     void normalItemQualityMinIsZero() {
         Item item = new Item("An old sword", 0, 0);

@@ -1,25 +1,20 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+
 public class GildedRose {
+    private final HashMap<String, Updateable> updaters;
     public Item[] items;
 
-    public GildedRose(Item[] items) {
+    public GildedRose(Item[] items, HashMap<String, Updateable> updaters) {
+
         this.items = items;
+        this.updaters = updaters;
     }
 
     public void updateQuality() {
         for (Item item : items) {
-            switch(item.name) {
-                case("Aged Brie"):
-                    new AgedBrieUpdater().update(item);
-                    break;
-                case("Backstage passes to a TAFKAL80ETC concert"):
-                    new BackstagePassesUpdater().update(item);
-                    break;
-                case("Sulfuras, Hand of Ragnaros"):
-                    break;
-                default:
-                    new NormalUpdater().update(item);
-                    break;
-            }
+            updaters.get(item.name).update(item);
         }
     }
 }
