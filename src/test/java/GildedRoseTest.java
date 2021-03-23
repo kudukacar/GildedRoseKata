@@ -4,34 +4,42 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
     @Test
-    void gildedRoseUpdatesEachItemWithTheUpdaters() {
-        String brieItemName = "Brie";
-        String baguetteItemName = "Baguette";
-        Item brieItem = new Item(brieItemName, 0, 0);
-        Item baguetteItem = new Item(baguetteItemName, 0, 0);
-        Item[] items = new Item[] { brieItem, baguetteItem };
-        Updaters updaters = new Updaters.Builder()
-                .addUpdater(brieItemName, new BrieUpdater())
-                .addUpdater(baguetteItemName, new BreadUpdater())
-                .build();
-        GildedRose app = new GildedRose(items, updaters);
+    void gildedRoseUpdatesEachItem() {
+        BrieItem brieItem = new BrieItem(0, 0);
+        BreadItem baguetteItem = new BreadItem(0, 0);
+        Itemable[] items = new Itemable[] { brieItem, baguetteItem };
+        GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(1, brieItem.quality);
         assertEquals(1, brieItem.sellIn);
         assertEquals(0, baguetteItem.quality);
         assertEquals(0, baguetteItem.sellIn);
     }
-    private class BrieUpdater implements Updateable {
+    private class BrieItem implements Itemable {
+        public int sellIn;
+        public int quality;
+
+        public BrieItem(int sellIn, int quality) {
+            this.sellIn = sellIn;
+            this.quality = quality;
+        }
         @Override
-        public void update(Item item) {
-            item.sellIn += 1;
-            item.quality += 1;
+        public void update() {
+            this.sellIn += 1;
+            this.quality += 1;
         }
     }
 
-    private class BreadUpdater implements Updateable {
+    private class BreadItem implements Itemable {
+        public int sellIn;
+        public int quality;
+
+        public BreadItem(int sellIn, int quality) {
+            this.sellIn = sellIn;
+            this.quality = quality;
+        }
         @Override
-        public void update(Item item) {
+        public void update() {
         }
     }
 }
