@@ -21,7 +21,7 @@ class ConjuredUpdaterTest {
 
     @Test
     void conjuredItemsDegradeByTwoWhenInDate() {
-        Item item = new Item("Conjured", 2, 10);
+        Item item = new Item("Conjured", 1, 10);
         ConjuredUpdater updater = new ConjuredUpdater();
         updater.update(item);
         assertEquals(8, item.quality);
@@ -29,7 +29,7 @@ class ConjuredUpdaterTest {
 
     @Test
     void conjuredItemsDegradeByFourWhenExpired() {
-        Item item = new Item("Conjured", 1, 10);
+        Item item = new Item("Conjured", 0, 10);
         ConjuredUpdater updater = new ConjuredUpdater();
         updater.update(item);
         assertEquals(6, item.quality);
