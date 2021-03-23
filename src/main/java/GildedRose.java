@@ -1,16 +1,13 @@
 public class GildedRose {
-    private final Updaters updaters;
-    public Item[] items;
+    public Itemable[] items;
 
-    public GildedRose(Item[] items, Updaters updaters) {
-
+    public GildedRose(Itemable[] items) {
         this.items = items;
-        this.updaters = updaters;
     }
 
     public void updateQuality() {
-        for (Item item : items) {
-            updaters.update(item);
+        for (Itemable item : items) {
+                item.update();
         }
     }
 }
