@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NormalUpdaterTest {
+
     @Test
     void normalItemQualityMinIsZero() {
         Item item = new Item("An old sword", 0, 0);

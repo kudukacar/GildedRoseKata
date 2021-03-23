@@ -1,25 +1,16 @@
 public class GildedRose {
+    private final Updaters updaters;
     public Item[] items;
 
-    public GildedRose(Item[] items) {
+    public GildedRose(Item[] items, Updaters updaters) {
+
         this.items = items;
+        this.updaters = updaters;
     }
 
     public void updateQuality() {
         for (Item item : items) {
-            switch(item.name) {
-                case("Aged Brie"):
-                    new AgedBrieUpdater().update(item);
-                    break;
-                case("Backstage passes to a TAFKAL80ETC concert"):
-                    new BackstagePassesUpdater().update(item);
-                    break;
-                case("Sulfuras, Hand of Ragnaros"):
-                    break;
-                default:
-                    new NormalUpdater().update(item);
-                    break;
-            }
+            updaters.update(item);
         }
     }
 }

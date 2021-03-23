@@ -1,8 +1,9 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BackstagePassesUpdaterTest {
+
     @Test
     void backstageItemsMaxQualityIs50() {
         Item item = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50);
