@@ -1,4 +1,4 @@
-package gildedroseinventory;
+package com.example.gildedrose.item;
 
 public class SulfurasItem implements Itemable{
     public final String name;

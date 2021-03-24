@@ -1,4 +1,4 @@
-package com.example.springboot;
+package com.example.gildedrose;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GildedRoseController {
     @RequestMapping("/")
-    public String index() {
+    public String welcomeUser() {
         return "Welcome to the Gilded Rose!";
     }
 }

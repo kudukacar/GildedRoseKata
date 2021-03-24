@@ -1,4 +1,6 @@
-import gildedroseinventory.NormalItem;
+package com.example.gildedrose.item;
+
+import com.example.gildedrose.item.NormalItem;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

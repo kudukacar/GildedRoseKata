@@ -1,16 +1,16 @@
-import gildedroseinventory.GildedRose;
-import gildedroseinventory.Itemable;
+package com.example.gildedrose.item;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GildedRoseTest {
+class UpdaterTest {
     @Test
     void gildedRoseUpdatesEachItem() {
         BrieItem brieItem = new BrieItem(0, 0);
         BreadItem baguetteItem = new BreadItem(0, 0);
         Itemable[] items = new Itemable[] { brieItem, baguetteItem };
-        GildedRose app = new GildedRose(items);
+        Updater app = new Updater(items);
         app.updateQuality();
         assertEquals(1, brieItem.quality);
         assertEquals(1, brieItem.sellIn);

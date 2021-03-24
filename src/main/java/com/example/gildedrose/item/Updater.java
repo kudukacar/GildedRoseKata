@@ -1,9 +1,9 @@
-package gildedroseinventory;
+package com.example.gildedrose.item;
 
-public class GildedRose {
+public class Updater {
     public Itemable[] items;
 
-    public GildedRose(Itemable[] items) {
+    public Updater(Itemable[] items) {
         this.items = items;
     }
 

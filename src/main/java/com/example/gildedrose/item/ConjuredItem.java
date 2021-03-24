@@ -1,6 +1,6 @@
-package gildedroseinventory;
+package com.example.gildedrose.item;
 
-public class ConjuredItem implements Itemable{
+public class ConjuredItem implements Itemable {
     public final String name;
     public int sellIn;
     public int quality;
