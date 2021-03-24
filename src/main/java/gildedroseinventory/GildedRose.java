@@ -1,3 +1,5 @@
+package gildedroseinventory;
+
 public class GildedRose {
     public Itemable[] items;
 

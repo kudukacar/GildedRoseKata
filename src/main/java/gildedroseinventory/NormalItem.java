@@ -1,3 +1,5 @@
+package gildedroseinventory;
+
 public class NormalItem implements Itemable{
     public final String name;
     public int sellIn;

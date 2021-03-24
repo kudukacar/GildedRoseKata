@@ -1,3 +1,5 @@
+package gildedroseinventory;
+
 public class SulfurasItem implements Itemable{
     public final String name;
     public int sellIn;

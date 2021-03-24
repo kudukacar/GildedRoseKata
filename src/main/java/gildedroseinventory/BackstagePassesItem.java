@@ -1,3 +1,5 @@
+package gildedroseinventory;
+
 public class BackstagePassesItem implements Itemable{
     public final String name;
     public int sellIn;
