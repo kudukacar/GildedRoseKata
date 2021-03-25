@@ -1,9 +1,9 @@
 package com.example.gildedrose.item;
 
 public class ConjuredItem implements Updateable {
-    public final String name;
-    public int sellIn;
-    public int quality;
+    private final String name;
+    private int sellIn;
+    private int quality;
 
     public ConjuredItem(String name, int sellIn, int quality) {
         this.name = name;
@@ -19,5 +19,20 @@ public class ConjuredItem implements Updateable {
         } else {
             this.quality = Math.max(0, this.quality -= 4);
         }
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public int getSellIn() {
+        return this.sellIn;
+    }
+
+    @Override
+    public int getQuality() {
+        return this.quality;
     }
 }

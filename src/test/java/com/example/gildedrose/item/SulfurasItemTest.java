@@ -1,17 +1,16 @@
 package com.example.gildedrose.item;
 
-import com.example.gildedrose.item.SulfurasItem;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SulfurasItemTest {
     @Test
     void sulfurasValuesAreConstant() {
         SulfurasItem item = new SulfurasItem("Sulfuras, Hand of Ragnaros", 0, 80);
         item.update();
-        assertEquals(0, item.sellIn);
-        assertEquals(80, item.quality);
+        assertEquals(0, item.getSellIn());
+        assertEquals(80, item.getQuality());
     }
 
 }
