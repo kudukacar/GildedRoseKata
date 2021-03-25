@@ -3,12 +3,10 @@ package com.example.gildedrose.item;
 import java.util.ArrayList;
 
 public class GildedRose {
-    private final Formattable formatter;
     public ArrayList<Updateable> items;
 
-    public GildedRose(ArrayList<Updateable> items, Formattable formatter) {
+    public GildedRose(ArrayList<Updateable> items) {
         this.items = items;
-        this.formatter = formatter;
     }
 
     public void updateQuality() {
@@ -16,6 +14,6 @@ public class GildedRose {
     }
 
     public Object getItems() {
-        return formatter.format(this.items);
+        return this.items;
     }
 }

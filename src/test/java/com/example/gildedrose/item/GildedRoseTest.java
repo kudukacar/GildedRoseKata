@@ -14,8 +14,7 @@ class GildedRoseTest {
     void gildedRoseGetsAllItems() {
         BrieItem brieItem = new BrieItem(0, 0);
         ArrayList<Updateable> items = new ArrayList<>(Arrays.asList(brieItem));
-        Formattable formatter = new Formatter();
-        GildedRose app = new GildedRose(items, formatter);
+        GildedRose app = new GildedRose(items);
         assertEquals(items, app.getItems());
     }
 
@@ -24,8 +23,7 @@ class GildedRoseTest {
         BrieItem brieItem = new BrieItem(0, 0);
         BreadItem baguetteItem = new BreadItem(0, 0);
         ArrayList<Updateable> items = new ArrayList<>(Arrays.asList(brieItem, baguetteItem));
-        Formattable formatter = new Formatter();
-        GildedRose app = new GildedRose(items, formatter);
+        GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(1, brieItem.quality);
         assertEquals(1, brieItem.sellIn);
@@ -57,14 +55,6 @@ class GildedRoseTest {
         }
         @Override
         public void update() {
-        }
-    }
-
-    private class Formatter implements Formattable {
-
-        @Override
-        public Object format(ArrayList<Updateable>items) {
-            return items;
         }
     }
 }

@@ -4,7 +4,6 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -12,8 +11,20 @@ class JSONFormatterTest {
     @Test
     void jsonFormatterReturnsTheObjectInJSON() {
         JSONFormatter formatter = new JSONFormatter();
-        ArrayList<Updateable> items = new ArrayList<>(Arrays.asList());
-        JSONObject object = new JSONObject();
-        assertEquals(formatter.format(items), "");
+        JSONObject jsonObject = new JSONObject();
+        GildedRose gildedRose = new GildedRose(new ArrayList<>());
+        assertEquals(formatter.format(gildedRose.getItems()), "");
+    }
+
+    private class GildedRose {
+        public ArrayList<Updateable> items;
+
+        public GildedRose(ArrayList<Updateable> items) {
+            this.items = items;
+        }
+
+        public ArrayList<Updateable> getItems () {
+            return items;
+        }
     }
 }
