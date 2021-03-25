@@ -6,3 +6,15 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+deploy:
+  provider: elasticbeanstalk
+  access_key_id:
+    $AWS_ACCESS_KEY_ID
+  secret_access_key:
+    $AWS_SECRET_ACCESS_KEY
+  region: "eu-west-1"
+  app: "Gilded Rose Pairing Project"
+  env: "Gildedrosepairingproject-env"
+  bucket_name: "gilded-rose-pairing-project"
+  skip_cleanup: true
+  zip-file: build/libs/GildedRoseKata-0.0.1-SNAPSHOT.jar

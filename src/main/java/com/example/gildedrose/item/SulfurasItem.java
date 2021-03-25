@@ -1,4 +1,6 @@
-public class SulfurasItem implements Itemable{
+package com.example.gildedrose.item;
+
+public class SulfurasItem implements Updateable {
     public final String name;
     public int sellIn;
     public int quality;

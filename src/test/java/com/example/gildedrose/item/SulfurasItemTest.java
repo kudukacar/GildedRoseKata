@@ -1,3 +1,6 @@
+package com.example.gildedrose.item;
+
+import com.example.gildedrose.item.SulfurasItem;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,6 @@
-public class NormalItem implements Itemable{
+package com.example.gildedrose.item;
+
+public class NormalItem implements Updateable {
     public final String name;
     public int sellIn;
     public int quality;
