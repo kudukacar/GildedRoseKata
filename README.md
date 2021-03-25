@@ -7,3 +7,9 @@ A code exercise for refactoring legacy code
 3. Clone repository by typing the following in the terminal: git clone https://github.com/kudukacar/GildedRoseKata.git
 4. In your terminal, navigate to the project folder
 5. Type the following in the terminal to run the tests: ./gradlew test
+
+## Running the Application
+1. `./gradlew build` to update the .jar file with your changes
+2. Find the updated file in GildedRoseKata/build/libs
+3. `java -jar example-0.0.1.jar` to run locally
+4. Visit [localhost:8080](http://localhost:8080) to see the welcome page
