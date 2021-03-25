@@ -15,7 +15,8 @@ deploy:
   secret_access_key:
     $AWS_SECRET_ACCESS_KEY
   region: "eu-west-1"
-  app: "gilded-rose-pairing-project"
-  env: "gilded-rose-dev"
+  app: "Gilded Rose Pairing Project"
+  env: "Gildedrosepairingproject-env"
   bucket_name: "gilded-rose-pairing-project"
   skip_cleanup: true
+  zip-file: "build/libs/GildedRoseKata-0.0.1-SNAPSHOT.jar"
