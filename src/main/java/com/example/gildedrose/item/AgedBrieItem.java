@@ -1,6 +1,6 @@
 package com.example.gildedrose.item;
 
-public class AgedBrieItem implements Itemable {
+public class AgedBrieItem implements Updateable {
     public final String name;
     public int sellIn;
     public int quality;

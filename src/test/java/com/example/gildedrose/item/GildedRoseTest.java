@@ -2,22 +2,26 @@ package com.example.gildedrose.item;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class UpdaterTest {
+class GildedRoseTest {
     @Test
     void gildedRoseUpdatesEachItem() {
         BrieItem brieItem = new BrieItem(0, 0);
         BreadItem baguetteItem = new BreadItem(0, 0);
-        Itemable[] items = new Itemable[] { brieItem, baguetteItem };
-        Updater app = new Updater(items);
+        ArrayList<Updateable> items = new ArrayList<>(Arrays.asList(brieItem, baguetteItem));
+        GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(1, brieItem.quality);
         assertEquals(1, brieItem.sellIn);
         assertEquals(0, baguetteItem.quality);
         assertEquals(0, baguetteItem.sellIn);
     }
-    private class BrieItem implements Itemable {
+    private class BrieItem implements Updateable {
         public int sellIn;
         public int quality;
 
@@ -32,7 +36,7 @@ class UpdaterTest {
         }
     }
 
-    private class BreadItem implements Itemable {
+    private class BreadItem implements Updateable {
         public int sellIn;
         public int quality;
 

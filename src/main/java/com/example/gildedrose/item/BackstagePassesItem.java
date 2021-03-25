@@ -1,8 +1,6 @@
 package com.example.gildedrose.item;
 
-import com.example.gildedrose.item.Itemable;
-
-public class BackstagePassesItem implements Itemable {
+public class BackstagePassesItem implements Updateable {
     public final String name;
     public int sellIn;
     public int quality;

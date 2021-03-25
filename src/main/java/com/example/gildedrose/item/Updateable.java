@@ -1,5 +1,5 @@
 package com.example.gildedrose.item;
 
-public interface Itemable {
+public interface Updateable {
     public void update();
 }
