@@ -9,27 +9,27 @@ class NormalItemTest {
     void normalItemQualityMinIsZero() {
         NormalItem item = new NormalItem("An old sword", 0, 0);
         item.update();
-        assertEquals(0, item.getQuality());
+        assertEquals(0, item.quality);
     }
 
     @Test
     void normalItemsDegradeByTwoAfterSellInIsLessThan0() {
         NormalItem item = new NormalItem("An old sword", 0, 10);
         item.update();
-        assertEquals(8, item.getQuality());
+        assertEquals(8, item.quality);
     }
 
     @Test
     void normalItemsDegradeByOneWhenSellInIsAboveZero() {
         NormalItem item = new NormalItem("An old sword", 1, 10);
         item.update();
-        assertEquals(9, item.getQuality());
+        assertEquals(9, item.quality);
     }
 
     @Test
     void normalItemsSellInDecreasesByOne() {
         NormalItem item = new NormalItem("An old sword", 0, 10);
         item.update();
-        assertEquals(-1, item.getSellIn());
+        assertEquals(-1, item.sellIn);
     }
 }

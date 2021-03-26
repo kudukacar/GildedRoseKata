@@ -41,21 +41,6 @@ class GildedRoseTest {
             this.sellIn += 1;
             this.quality += 1;
         }
-
-        @Override
-        public String getName() {
-            return null;
-        }
-
-        @Override
-        public int getSellIn() {
-            return 0;
-        }
-
-        @Override
-        public int getQuality() {
-            return 0;
-        }
     }
 
     private class BreadItem implements Updateable {
@@ -68,21 +53,6 @@ class GildedRoseTest {
         }
         @Override
         public void update() {
-        }
-
-        @Override
-        public String getName() {
-            return null;
-        }
-
-        @Override
-        public int getSellIn() {
-            return 0;
-        }
-
-        @Override
-        public int getQuality() {
-            return 0;
         }
     }
 }

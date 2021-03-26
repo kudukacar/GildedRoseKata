@@ -9,8 +9,8 @@ class SulfurasItemTest {
     void sulfurasValuesAreConstant() {
         SulfurasItem item = new SulfurasItem("Sulfuras, Hand of Ragnaros", 0, 80);
         item.update();
-        assertEquals(0, item.getSellIn());
-        assertEquals(80, item.getQuality());
+        assertEquals(0, item.sellIn);
+        assertEquals(80, item.quality);
     }
 
 }

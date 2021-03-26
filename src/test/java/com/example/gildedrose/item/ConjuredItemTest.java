@@ -9,27 +9,27 @@ class ConjuredItemTest {
     void conjuredItemQualityMinIsZero() {
         ConjuredItem item = new ConjuredItem("Conjured", 0, 1);
         item.update();
-        assertEquals(0, item.getQuality());
+        assertEquals(0, item.quality);
     }
 
     @Test
     void conjuredItemSellInDecreasesByOne() {
         ConjuredItem item = new ConjuredItem("Conjured", 2, 10);
         item.update();
-        assertEquals(1, item.getSellIn());
+        assertEquals(1, item.sellIn);
     }
 
     @Test
     void conjuredItemsDegradeByTwoWhenInDate() {
         ConjuredItem item = new ConjuredItem("Conjured", 1, 10);
         item.update();
-        assertEquals(8, item.getQuality());
+        assertEquals(8, item.quality);
     }
 
     @Test
     void conjuredItemsDegradeByFourWhenExpired() {
         ConjuredItem item = new ConjuredItem("Conjured", 0, 10);
         item.update();
-        assertEquals(6, item.getQuality());
+        assertEquals(6, item.quality);
     }
 }
