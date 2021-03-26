@@ -23,4 +23,11 @@ class GildedRoseControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Gilded Rose")));
     }
+
+    @Test
+    void displaysTheInventory() throws Exception {
+        mvc.perform(get("/items")).andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("[{\"name\":\"Normal\",\"sellIn\":0,\"quality\":0}]")));
+    }
 }
