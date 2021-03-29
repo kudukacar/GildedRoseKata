@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) { SpringApplication.run(Application.class, args); }
 
     @Bean
-    CommandLineRunner initializeDatabase(ItemRepository itemRepository) {
+    CommandLineRunner loadDatabase(ItemRepository itemRepository) {
         return args -> {
             itemRepository.save(new NormalItem("Normal", 10, 10));
             itemRepository.save(new AgedBrieItem("AgedBrie", -1, 20));
