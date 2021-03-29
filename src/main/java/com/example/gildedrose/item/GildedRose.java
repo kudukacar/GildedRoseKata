@@ -3,7 +3,7 @@ package com.example.gildedrose.item;
 import java.util.ArrayList;
 
 public class GildedRose {
-    public ArrayList<Updateable> items;
+    private ArrayList<Updateable> items;
 
     public GildedRose(ArrayList<Updateable> items) {
         this.items = items;
