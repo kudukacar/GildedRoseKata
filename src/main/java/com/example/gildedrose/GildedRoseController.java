@@ -1,8 +1,11 @@
 package com.example.gildedrose;
 
+import com.example.gildedrose.item.Updateable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 
 @RestController
 public class GildedRoseController {
@@ -17,7 +20,7 @@ public class GildedRoseController {
     }
 
     @GetMapping("/items")
-    public Object getItems() {
+    public ArrayList<Updateable> getItems() {
         return gildedRoseService.getGildedRose().getItems();
     }
 }

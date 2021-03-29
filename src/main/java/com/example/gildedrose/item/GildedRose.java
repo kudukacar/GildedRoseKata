@@ -13,7 +13,7 @@ public class GildedRose {
         items.forEach(Updateable::update);
     }
 
-    public Object getItems() {
+    public ArrayList<Updateable> getItems() {
         return this.items;
     }
 }
