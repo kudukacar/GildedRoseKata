@@ -9,14 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
     @Test
-    void gildedRoseGetsAllItems() {
-        BrieItem brieItem = new BrieItem(0, 0);
-        ArrayList<Updateable> items = new ArrayList<>(Arrays.asList(brieItem));
-        GildedRose app = new GildedRose(items);
-        assertEquals(items, app.getItems());
-    }
-
-    @Test
     void gildedRoseUpdatesEachItem() {
         BrieItem brieItem = new BrieItem(0, 0);
         BreadItem baguetteItem = new BreadItem(0, 0);

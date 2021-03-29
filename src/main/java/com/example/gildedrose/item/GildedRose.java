@@ -12,8 +12,4 @@ public class GildedRose {
     public void updateQuality() {
         items.forEach(Updateable::update);
     }
-
-    public ArrayList<Updateable> getItems() {
-        return this.items;
-    }
 }
