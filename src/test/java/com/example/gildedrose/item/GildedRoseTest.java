@@ -13,8 +13,7 @@ class GildedRoseTest {
         BrieItem brieItem = new BrieItem(0, 0);
         BreadItem baguetteItem = new BreadItem(0, 0);
         ArrayList<Updateable> items = new ArrayList<>(Arrays.asList(brieItem, baguetteItem));
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        GildedRose.updateQuality(items);
         assertEquals(1, brieItem.quality);
         assertEquals(1, brieItem.sellIn);
         assertEquals(0, baguetteItem.quality);
