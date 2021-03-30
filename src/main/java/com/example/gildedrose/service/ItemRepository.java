@@ -1,5 +1,6 @@
 package com.example.gildedrose.service;
 
+import com.example.gildedrose.item.GildedRose;
 import com.example.gildedrose.item.Updateable;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ public class ItemRepository {
     private ArrayList<Updateable> items;
 
     public ItemRepository() {
-        this.items = new ArrayList<Updateable>();
+        this.items = new ArrayList<>();
     }
 
     public Updateable save(Updateable item) {
@@ -20,5 +21,11 @@ public class ItemRepository {
 
     public ArrayList<Updateable> findAll() {
         return this.items;
+    }
+
+    public void update() {
+        ArrayList<Updateable> updated = GildedRose.updateQuality(items);
+        updated.add(items.get(0));
+        this.items = updated;
     }
 }
