@@ -14,6 +14,7 @@ public class ItemController {
     public ItemController(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }
+
     @GetMapping("/items")
     public ArrayList<Updateable> getAllItems() {
         return itemRepository.findAll();

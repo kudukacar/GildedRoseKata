@@ -15,6 +15,7 @@ class ItemRepositoryTest {
         SimpleItem simpleItem = new SimpleItem("simpleItem");
         assertThat(itemRepository.save(simpleItem), samePropertyValuesAs(simpleItem));
     }
+
     @Test
     void returnsAllItemsInRepository() {
         ItemRepository itemRepository = new ItemRepository();
@@ -23,6 +24,7 @@ class ItemRepositoryTest {
         assertThat(itemRepository.findAll(), hasItem(simpleItem));
         assertThat(itemRepository.findAll(), hasSize(1));
     }
+
     private class SimpleItem implements Updateable {
         public String name;
 
