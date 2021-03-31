@@ -23,17 +23,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+
 @WebMvcTest(ItemController.class)
 class ItemControllerTest {
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private Validators validators;
-
-    @MockBean
-    private ItemRepository itemRepository;
-
+    @Autowired private MockMvc mockMvc;
+    @MockBean private Validators validators;
+    @MockBean private ItemRepository itemRepository;
     private ObjectMapper mapper = new ObjectMapper();
 
     @Test
@@ -50,11 +45,11 @@ class ItemControllerTest {
         ProposedItem proposedItem = new ProposedItem("Normal", "Normal", 0, 0);
         byte[] itemJson = mapper.writeValueAsBytes(proposedItem);
 
-        when(validators.validate(proposedItem)).thenReturn(item);
-        when(itemRepository.save(item)).thenReturn(item);
+        when(itemRepository.save(validators.validate(proposedItem))).thenReturn(item);
         this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Normal")));
     }
 
     private class NormalTestItem implements Updateable {
