@@ -1,22 +1,17 @@
-package com.example.gildedrose.service;
+package com.example.gildedrose.validator;
 
 import com.example.gildedrose.item.ProposedItem;
 import com.example.gildedrose.item.Updateable;
-import com.example.gildedrose.validator.Validation;
-import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 
-@Service
+
 public class Validators {
-    private ArrayList<Validation> validators;
+    private List<Validation> validators;
 
-    public Validators() {
-        this.validators = new ArrayList<Validation>();
-    }
+    public Validators(List<Validation> validators) {
 
-    public void add(Validation validator) {
-        this.validators.add(validator);
+        this.validators = validators;
     }
 
     public Updateable validate(ProposedItem proposedItem) {

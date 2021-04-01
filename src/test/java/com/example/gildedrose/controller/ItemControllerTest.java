@@ -3,7 +3,7 @@ package com.example.gildedrose.controller;
 import com.example.gildedrose.item.ProposedItem;
 import com.example.gildedrose.item.Updateable;
 import com.example.gildedrose.service.ItemRepository;
-import com.example.gildedrose.service.Validators;
+import com.example.gildedrose.validator.Validators;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

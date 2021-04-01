@@ -2,12 +2,14 @@ package com.example.gildedrose;
 
 import com.example.gildedrose.item.*;
 import com.example.gildedrose.service.ItemRepository;
-import com.example.gildedrose.service.Validators;
+import com.example.gildedrose.validator.Validators;
 import com.example.gildedrose.validator.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 public class Application {
@@ -25,14 +27,14 @@ public class Application {
     }
 
     @Bean
-    CommandLineRunner loadValidators(Validators validators) {
+    Validators validators() {
         QualityValidator qualityValidator = new QualityValidator();
-        return args -> {
-            validators.add(new AgedBrieValidator(qualityValidator));
-            validators.add(new NormalValidator(qualityValidator));
-            validators.add(new ConjuredValidator(qualityValidator));
-            validators.add(new BackstagePassesValidator(qualityValidator));
-            validators.add(new SulfurasValidator());
-        };
+        return new Validators(Arrays.asList(
+                new AgedBrieValidator(qualityValidator),
+                new NormalValidator(qualityValidator),
+                new ConjuredValidator(qualityValidator),
+                new BackstagePassesValidator(qualityValidator),
+                new SulfurasValidator()
+        ));
     }
 }

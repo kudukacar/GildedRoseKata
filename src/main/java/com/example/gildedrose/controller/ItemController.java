@@ -3,7 +3,7 @@ package com.example.gildedrose.controller;
 import com.example.gildedrose.item.ProposedItem;
 import com.example.gildedrose.service.ItemRepository;
 import com.example.gildedrose.item.Updateable;
-import com.example.gildedrose.service.Validators;
+import com.example.gildedrose.validator.Validators;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
