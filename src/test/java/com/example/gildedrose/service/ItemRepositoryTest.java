@@ -4,6 +4,8 @@ import com.example.gildedrose.item.Updateable;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,11 +31,17 @@ class ItemRepositoryTest {
     @Test
     void updatesAllItems() {
         ItemRepository itemRepository = new ItemRepository();
-        BreadItem breadItem = new BreadItem(3, 3);
-        itemRepository.save(breadItem);
-        itemRepository.update();
-        assertEquals(1, breadItem.quality);
-        assertEquals(2, breadItem.sellIn);
+        itemRepository.save(new BreadItem(3, 3));
+
+        ArrayList<Updateable> updatedItem = new ArrayList<>();
+        BreadItem updatedBreadItem = new BreadItem(1, 0);
+        updatedItem.add(updatedBreadItem);
+
+        itemRepository.update(updatedItem);
+        BreadItem getUpdatedBread = (BreadItem) itemRepository.findAll().get(0);
+
+        assertEquals(updatedBreadItem.quality, getUpdatedBread.quality);
+        assertEquals(updatedBreadItem.sellIn, getUpdatedBread.sellIn);
     }
 
     private class SimpleItem implements Updateable {
