@@ -10,15 +10,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class GildedRoseTest {
     @Test
     void gildedRoseUpdatesEachItem() {
-        BrieItem brieItem = new BrieItem(0, 0);
-        BreadItem baguetteItem = new BreadItem(0, 0);
+        int initialSellIn = 5;
+        int initialQuality = 10;
+        BrieItem brieItem = new BrieItem(initialSellIn, initialQuality);
+        BreadItem baguetteItem = new BreadItem(initialSellIn, initialQuality);
         ArrayList<Updateable> items = new ArrayList<>(Arrays.asList(brieItem, baguetteItem));
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
-        assertEquals(1, brieItem.quality);
-        assertEquals(1, brieItem.sellIn);
-        assertEquals(0, baguetteItem.quality);
-        assertEquals(0, baguetteItem.sellIn);
+        GildedRose.updateQuality(items);
+        assertEquals(initialQuality + 1, brieItem.quality);
+        assertEquals(initialSellIn - 1, brieItem.sellIn);
+        assertEquals(initialQuality, baguetteItem.quality);
+        assertEquals(initialSellIn, baguetteItem.sellIn);
     }
     private class BrieItem implements Updateable {
         public int sellIn;
@@ -30,7 +31,7 @@ class GildedRoseTest {
         }
         @Override
         public void update() {
-            this.sellIn += 1;
+            this.sellIn -= 1;
             this.quality += 1;
         }
     }

@@ -10,7 +10,7 @@ public class ItemRepository {
     private ArrayList<Updateable> items;
 
     public ItemRepository() {
-        this.items = new ArrayList<Updateable>();
+        this.items = new ArrayList<>();
     }
 
     public Updateable save(Updateable item) {
@@ -20,5 +20,9 @@ public class ItemRepository {
 
     public ArrayList<Updateable> findAll() {
         return this.items;
+    }
+
+    public void update(ArrayList<Updateable> updatedItems) {
+        this.items = updatedItems;
     }
 }

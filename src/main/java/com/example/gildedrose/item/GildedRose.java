@@ -3,13 +3,8 @@ package com.example.gildedrose.item;
 import java.util.ArrayList;
 
 public class GildedRose {
-    private ArrayList<Updateable> items;
-
-    public GildedRose(ArrayList<Updateable> items) {
-        this.items = items;
-    }
-
-    public void updateQuality() {
+    public static ArrayList<Updateable> updateQuality(ArrayList<Updateable> items) {
         items.forEach(Updateable::update);
+        return items;
     }
 }
