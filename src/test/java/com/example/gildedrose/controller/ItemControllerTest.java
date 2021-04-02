@@ -6,6 +6,7 @@ import com.example.gildedrose.service.ItemRepository;
 import com.example.gildedrose.validator.Validators;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -27,8 +28,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(ItemController.class)
 class ItemControllerTest {
     @Autowired private MockMvc mockMvc;
-    @MockBean private Validators validators;
     @MockBean private ItemRepository itemRepository;
+    @MockBean private Validators validators;
     private ObjectMapper mapper = new ObjectMapper();
 
     @Test
@@ -40,16 +41,30 @@ class ItemControllerTest {
     }
 
     @Test
-    public void addsItem() throws Exception {
+    public void addsValidItem() throws Exception {
         NormalTestItem item = new NormalTestItem("Normal");
         ProposedItem proposedItem = new ProposedItem("Normal", "Normal", 0, 0);
         byte[] itemJson = mapper.writeValueAsBytes(proposedItem);
 
-        when(itemRepository.save(validators.validate(proposedItem))).thenReturn(item);
+        when(validators.validate(Mockito.any(ProposedItem.class))).thenReturn(item);
+        when(itemRepository.save(Mockito.any(Updateable.class))).thenReturn(item);
         this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Normal")));
+    }
+
+    @Test
+    public void returnsBadRequestWhenInvalidItem() throws Exception {
+        NormalTestItem item = new NormalTestItem("Normal");
+        ProposedItem proposedItem = new ProposedItem("Normal", "Normal", 0, 0);
+        byte[] itemJson = mapper.writeValueAsBytes(proposedItem);
+
+        when(validators.validate(Mockito.any(ProposedItem.class))).thenReturn(null);
+        this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(containsString("Incorrect")));
     }
 
     private class NormalTestItem implements Updateable {
