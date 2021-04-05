@@ -56,7 +56,6 @@ class ItemControllerTest {
 
     @Test
     public void returnsBadRequestWhenInvalidItem() throws Exception {
-        NormalTestItem item = new NormalTestItem("Normal");
         ProposedItem proposedItem = new ProposedItem("Normal", "Normal", 0, 0);
         byte[] itemJson = mapper.writeValueAsBytes(proposedItem);
 
