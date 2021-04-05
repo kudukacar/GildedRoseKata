@@ -12,7 +12,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest(classes={GildedRoseController.class})
+@SpringBootTest
 @AutoConfigureMockMvc
 class GildedRoseControllerTest {
     @Autowired
@@ -22,6 +22,6 @@ class GildedRoseControllerTest {
     void welcomesTheUser() throws Exception {
         mvc.perform(get("/")).andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Gilded Rose")));
+                .andExpect(content().string(containsString("/items")));
     }
 }
