@@ -29,7 +29,7 @@ class ItemUpdaterTest {
     @Test
     public void updatesTheRepositoryWhenScheduled() {
         await()
-                .atMost(Duration.ONE_SECOND)
-                .untilAsserted(() -> verify(itemUpdater, atLeast(1)).performUpdate());
+                .atMost(Duration.TWO_SECONDS)
+                .untilAsserted(() -> verify(itemUpdater, atLeast(2)).performUpdate());
     }
 }
