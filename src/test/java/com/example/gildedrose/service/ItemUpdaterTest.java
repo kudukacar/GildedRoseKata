@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static org.awaitility.Awaitility.await;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@SpringBootTest(properties = { "app.update.cron= */5 * * * * ?" })
 class ItemUpdaterTest {
     @Mock
     ItemRepository itemRepository;
@@ -29,7 +29,7 @@ class ItemUpdaterTest {
     @Test
     public void updatesTheRepositoryWhenScheduled() {
         await()
-                .atMost(Duration.FIVE_SECONDS)
-                .untilAsserted(() -> verify(itemUpdater, atLeast(1)).performUpdate());
+            .atMost(Duration.FIVE_SECONDS)
+            .untilAsserted(() -> verify(itemUpdater, atLeast(1)).performUpdate());
     }
 }
