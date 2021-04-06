@@ -2,7 +2,6 @@ package com.example.gildedrose;
 
 import com.example.gildedrose.item.*;
 import com.example.gildedrose.service.ItemRepository;
-import com.example.gildedrose.validator.Validators;
 import com.example.gildedrose.validator.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
