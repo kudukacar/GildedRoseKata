@@ -17,7 +17,7 @@ public class ItemUpdater {
         this.itemRepository = itemRepository;
     }
 
-    @Scheduled(cron = "*/5 * * * * ?")
+    @Scheduled(cron = "${app.update.cron}")
     public void performUpdate() {
         ArrayList<Updateable> items = itemRepository.findAll();
         itemRepository.update(GildedRose.updateQuality(items));
