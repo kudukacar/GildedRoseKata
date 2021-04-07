@@ -10,7 +10,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -24,13 +23,13 @@ class GildedRoseControllerTest {
 
     @Test
     void withUnauthorizedUserReturnsUnauthorizedStatus() throws Exception {
-        mvc.perform(get("/")).andDo(print())
-                .andExpect(status().isUnauthorized());
+        mvc.perform(get("/")).andExpect(status().isUnauthorized());
     }
 
     @Test
     void withAuthorizedUserReturnsWelcomeMessage() throws Exception {
-        mvc.perform(get("/").with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD")))).andDo(print())
+        mvc.perform(get("/")
+                .with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD"))))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("/items")));
     }

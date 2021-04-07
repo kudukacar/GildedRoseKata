@@ -22,7 +22,6 @@ import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -37,16 +36,17 @@ class ItemControllerTest {
 
     @Test
     public void getsAllItemsWithAuthorizedUser() throws Exception {
-        when(itemRepository.findAll()).thenReturn(new ArrayList<Updateable>(Arrays.asList(new NormalTestItem("Test"))));
-        this.mockMvc.perform(get("/items").with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD")))).andDo(print())
+        ArrayList<Updateable> items = new ArrayList<Updateable>(Arrays.asList(new NormalTestItem("Test")));
+        when(itemRepository.findAll()).thenReturn(items);
+        this.mockMvc.perform(get("/items")
+                .with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD"))))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Test")));
     }
 
     @Test
     public void returnsUnauthorizedStatusWithUnauthorizedUserForGetRequest() throws Exception {
-        this.mockMvc.perform(get("/items")).andDo(print())
-                .andExpect(status().isUnauthorized());
+        this.mockMvc.perform(get("/items")).andExpect(status().isUnauthorized());
     }
 
     @Test
@@ -57,8 +57,8 @@ class ItemControllerTest {
 
         when(validators.validate(Mockito.any(ProposedItem.class))).thenReturn(item);
         when(itemRepository.save(Mockito.any(Updateable.class))).thenReturn(item);
-        this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD"))))
-                .andDo(print())
+        this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
+                .with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD"))))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Normal")));
     }
@@ -69,7 +69,6 @@ class ItemControllerTest {
         byte[] itemJson = mapper.writeValueAsBytes(proposedItem);
 
         this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-                .andDo(print())
                 .andExpect(status().isUnauthorized());
     }
 
@@ -79,8 +78,8 @@ class ItemControllerTest {
         byte[] itemJson = mapper.writeValueAsBytes(proposedItem);
 
         when(validators.validate(Mockito.any(ProposedItem.class))).thenReturn(null);
-        this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD"))))
-                .andDo(print())
+        this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON)
+                .with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD"))))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string(containsString("Incorrect")));
     }
