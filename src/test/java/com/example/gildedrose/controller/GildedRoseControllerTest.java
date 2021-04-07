@@ -25,13 +25,13 @@ class GildedRoseControllerTest {
     @Test
     void withUnauthorizedUserReturnsUnauthorizedStatus() throws Exception {
         mvc.perform(get("/")).andDo(print())
-                .andExpect(status().isUnauthorized());
+            .andExpect(status().isUnauthorized());
     }
 
     @Test
     void withAuthorizedUserReturnsWelcomeMessage() throws Exception {
         mvc.perform(get("/").with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD")))).andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("/items")));
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("/items")));
     }
 }
