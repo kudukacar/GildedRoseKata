@@ -39,14 +39,14 @@ class ItemControllerTest {
     public void getsAllItemsWithAuthorizedUser() throws Exception {
         when(itemRepository.findAll()).thenReturn(new ArrayList<Updateable>(Arrays.asList(new NormalTestItem("Test"))));
         this.mockMvc.perform(get("/items").with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD")))).andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Test")));
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Test")));
     }
 
     @Test
     public void returnsUnauthorizedStatusWithUnauthorizedUserForGetRequest() throws Exception {
         this.mockMvc.perform(get("/items")).andDo(print())
-                .andExpect(status().isUnauthorized());
+            .andExpect(status().isUnauthorized());
     }
 
     @Test
@@ -58,9 +58,9 @@ class ItemControllerTest {
         when(validators.validate(Mockito.any(ProposedItem.class))).thenReturn(item);
         when(itemRepository.save(Mockito.any(Updateable.class))).thenReturn(item);
         this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD"))))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Normal")));
+            .andDo(print())
+            .andExpect(status().isOk())
+            .andExpect(content().string(containsString("Normal")));
     }
 
     @Test
@@ -69,8 +69,8 @@ class ItemControllerTest {
         byte[] itemJson = mapper.writeValueAsBytes(proposedItem);
 
         this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isUnauthorized());
+            .andDo(print())
+            .andExpect(status().isUnauthorized());
     }
 
     @Test
@@ -80,9 +80,9 @@ class ItemControllerTest {
 
         when(validators.validate(Mockito.any(ProposedItem.class))).thenReturn(null);
         this.mockMvc.perform(post("/items").content(itemJson).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON).with(httpBasic(environment.getProperty("USERNAME"), environment.getProperty("PASSWORD"))))
-                .andDo(print())
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string(containsString("Incorrect")));
+            .andDo(print())
+            .andExpect(status().isBadRequest())
+            .andExpect(content().string(containsString("Incorrect")));
     }
 
     private class NormalTestItem implements Updateable {
@@ -93,7 +93,6 @@ class ItemControllerTest {
         }
         @Override
         public void update() {
-
         }
     }
 }

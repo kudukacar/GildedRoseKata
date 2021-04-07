@@ -3,7 +3,6 @@ package com.example.gildedrose.service;
 import com.example.gildedrose.item.GildedRose;
 import com.example.gildedrose.item.Updateable;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
