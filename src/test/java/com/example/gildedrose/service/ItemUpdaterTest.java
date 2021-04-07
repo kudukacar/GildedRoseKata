@@ -1,15 +1,17 @@
 package com.example.gildedrose.service;
 
+import org.awaitility.Duration;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import java.util.ArrayList;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.awaitility.Awaitility.await;
+import static org.mockito.Mockito.*;
 
-@SpringBootTest
+@SpringBootTest(properties = { "app.update.cron= */5 * * * * ?" })
 class ItemUpdaterTest {
     @Mock
     ItemRepository itemRepository;
