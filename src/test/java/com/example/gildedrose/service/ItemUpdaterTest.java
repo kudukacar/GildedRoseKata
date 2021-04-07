@@ -22,14 +22,4 @@ class ItemUpdaterTest {
         itemUpdater.performUpdate();
         verify(itemRepository, times(1)).update(new ArrayList<>());
     }
-
-    @SpyBean
-    private ItemUpdater itemUpdater;
-
-    @Test
-    public void updatesTheRepositoryWhenScheduled() {
-        await()
-            .atMost(Duration.FIVE_SECONDS)
-            .untilAsserted(() -> verify(itemUpdater, atLeast(1)).performUpdate());
-    }
 }
