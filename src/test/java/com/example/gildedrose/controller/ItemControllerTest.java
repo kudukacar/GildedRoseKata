@@ -92,7 +92,6 @@ class ItemControllerTest {
         }
         @Override
         public void update() {
-
         }
     }
 }

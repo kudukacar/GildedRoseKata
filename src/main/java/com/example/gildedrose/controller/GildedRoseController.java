@@ -16,13 +16,13 @@ public class GildedRoseController {
     @GetMapping("/")
     public EntityModel<Introduction> welcomeUser() throws Exception {
         Introduction introduction = new Introduction(
-                "Welcome to the Gilded Rose! Access the links to see the inventory, and to add an item to the inventory. See item types and proposed item properties.",
-                Arrays.asList("AgedBrie", "BackstagePasses", "Conjured", "Normal", "Sulfuras"),
-                Arrays.asList("itemType", "name", "sellIn", "quality"));
+            "Welcome to the Gilded Rose! Access the links to see the inventory, and to add an item to the inventory. See item types and proposed item properties.",
+            Arrays.asList("AgedBrie", "BackstagePasses", "Conjured", "Normal", "Sulfuras"),
+            Arrays.asList("itemType", "name", "sellIn", "quality"));
 
         return EntityModel.of(introduction,
-                linkTo(methodOn(ItemController.class).getAllItems()).withRel("See inventory"),
-                linkTo(methodOn(ItemController.class).addItem(null)).withRel("Add item"));
+            linkTo(methodOn(ItemController.class).getAllItems()).withRel("See inventory"),
+            linkTo(methodOn(ItemController.class).addItem(null)).withRel("Add item"));
     }
 
     private class Introduction {
