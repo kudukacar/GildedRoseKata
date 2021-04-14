@@ -2,7 +2,7 @@ jobs:
   include:
     - name: "Backend"
       language: java
-      before_script:
+      before_install:
         - cd backend
       before_cache:
         - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -12,12 +12,8 @@ jobs:
           - $HOME/.gradle/caches/
           - $HOME/.gradle/wrapper/
     - name: "Frontend"
-      language: java
-      install:
+      language: node_js
+      node_js:
+        - 15
+      before_install:
         - cd frontend
-        - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-        - nvm install 15.11.0
-        - nvm use 15.11.0
-        - npm install
-      script:
-        - npm test
