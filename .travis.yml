@@ -13,8 +13,5 @@ jobs:
           - $HOME/.gradle/wrapper/
     - name: "Frontend"
       language: node_js
-      install:
-        - cd frontend
-        - npm install
-      script: npm test
-
+      node_js:
+        - 15
