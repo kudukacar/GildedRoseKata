@@ -1,22 +1,19 @@
-language: java
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-deploy:
-  on:
-    branch: master
-  provider: elasticbeanstalk
-  access_key_id:
-    $AWS_ACCESS_KEY_ID
-  secret_access_key:
-    $AWS_SECRET_ACCESS_KEY
-  region: "eu-west-1"
-  app: "Gilded Rose Pairing Project"
-  env: "Gildedrosepairingproject-env"
-  bucket_name: "gilded-rose-pairing-project"
-  skip_cleanup: true
-  zip-file: build/libs/GildedRoseKata-0.0.1-SNAPSHOT.jar
+jobs:
+  include:
+    - name: "Backend"
+      language: java
+      before_install:
+        - cd backend
+      before_cache:
+        - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+        - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+      cache:
+        directories:
+          - $HOME/.gradle/caches/
+          - $HOME/.gradle/wrapper/
+    - name: "Frontend"
+      language: node_js
+      node_js:
+        - 15
+      before_install:
+        - cd frontend
