@@ -1,0 +1,40 @@
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(33.3333%, 1fr));
+  margin-right: -5%;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.image {
+  position: absolute;
+  width: 217px;
+  height: 213px;
+  margin-top: 20%;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  line-height: 24.52px;
+  width: 217px;
+  height: 213px;
+  justify-content: space-evenly;
+  margin-top: 20%;
+  box-sizing: border-box;
+  padding: 0px 41px;
+}
+
+.image:hover {
+  opacity: 0;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 32.69px;
+  padding-bottom: 10%;
+}

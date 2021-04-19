@@ -1,15 +1,17 @@
 import React from 'react';
-import logo from './gildedrose.jpeg';
-import './App.css';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Layout from './layout';
+import FetchItems from './fetch_items';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-          Welcome to The Gilded Rose
-      </header>
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={FetchItems}/>
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 }
 

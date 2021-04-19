@@ -1,13 +1,6 @@
 {
   "short_name": "Gilded Rose",
   "name": "Gilded Rose",
-  "icons": [
-    {
-      "src": "gildedrose.jpeg",
-      "type": "image/jpeg",
-      "sizes": "192x192"
-    }
-  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

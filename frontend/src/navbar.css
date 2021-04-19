@@ -1,0 +1,11 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size:48px;
+  background-color: #FFFFF6;
+  padding: 0% 10%;
+  line-height: 65.38px;
+  font-weight: 600;
+  height: 117px;
+}

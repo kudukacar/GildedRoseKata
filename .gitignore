@@ -21,6 +21,7 @@ frontend/coverage
 frontend/build
 
 # misc
+frontend/.env
 frontend/.env.local
 frontend/.env.development.local
 frontend/.env.test.local
