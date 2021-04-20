@@ -12,29 +12,24 @@ const ItemsIndex = (props: { itemsProp: ItemsProp }) => {
   const { items } = itemsProp;
 
   const agedbrieDisplay: ItemDisplay = {
-    backgroundColor: "#DAD6FA",
     image: agedbrie,
     name: "Aged Brie",
   }
   const normalDisplay: ItemDisplay = {
-    backgroundColor: "#ED9C19",
     image: normal,
     name: "Normal",
   }
   const backstageDisplay: ItemDisplay = {
-    backgroundColor: "#FFEDED",
     image: backstage,
     name: "Backstage Pass",
   }
 
   const conjuredDisplay: ItemDisplay = {
-    backgroundColor: "#82C1DF",
     image: conjured,
     name: "Conjured",
   }
 
   const sulfurasDisplay: ItemDisplay = {
-    backgroundColor: "#D7E447",
     image: sulfuras,
     name: "Sulfuras",
   }
@@ -58,7 +53,7 @@ const ItemsIndex = (props: { itemsProp: ItemsProp }) => {
           alt={item.name} 
           className="image" 
           />
-        <ul className="item" style={{backgroundColor: images.get(item.name)?.backgroundColor}}>
+        <ul className={item.name}>
           <li className="item-name">{images.get(item.name)?.name}</li>
           <li>Quality is {item.quality}</li>
           <li>Sell in {item.sellIn} days</li>

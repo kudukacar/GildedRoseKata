@@ -1,8 +1,8 @@
 .body {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  background-color: #000000;
+  justify-content: space-between;
+  background-color: #111111;
   min-height: 100vh;
   margin: auto;
 }

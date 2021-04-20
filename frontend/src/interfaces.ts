@@ -9,7 +9,6 @@ export interface ItemsProp {
 }
 
 export interface ItemDisplay {
-  backgroundColor: string;
   image: string;
   name: string;
 }
