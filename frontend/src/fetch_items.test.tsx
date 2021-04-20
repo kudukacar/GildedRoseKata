@@ -1,8 +1,9 @@
 import React from 'react';
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import FetchItems from './fetch_items';
+import { ItemsProp } from './interfaces';
 
 const server = setupServer(
   rest.get('/items', (req, res, ctx) => {
@@ -10,13 +11,24 @@ const server = setupServer(
   })
 )
 
+const ItemsIndexForTesting = (props: { itemsProp: ItemsProp }) => {
+  const { itemsProp } = props;
+  const { items } = itemsProp;
+
+  return (
+    <ul>
+        {items.map((item, index) => <li key={index}>{item.name}</li>)}
+    </ul>
+  )
+}
+
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 test('loads and displays the fetched items', async () => {
-  render(<FetchItems/>)
+  render(<FetchItems component={ItemsIndexForTesting}/>)
 
-  await screen.findByText(/Aged Brie/i);
-  expect(screen.getByText("Aged Brie")).toBeInTheDocument();
+  await screen.findByText(/AgedBrie/i);
+  expect(screen.getByText("AgedBrie")).toBeInTheDocument();
 })
