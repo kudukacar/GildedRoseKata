@@ -1,0 +1,58 @@
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(33.3333%, 1fr));
+  justify-content: space-between;
+}
+
+.wrapper {
+  position: relative;
+  margin: auto;
+}
+
+.image {
+  position: absolute;
+  width: 217px;
+  height: 213px;
+}
+
+.AgedBrie, .BackstagePasses, .Conjured, .Sulfuras, .Normal{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 24.52px;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  height: 213px;
+  width: 217px; 
+}
+
+.AgedBrie {
+  background-color: #dad6fa;
+}
+
+.BackstagePasses {
+  background-color: #ffeded;
+}
+
+.Conjured {
+  background-color: #82c1df;
+}
+
+.Sulfuras {
+  background-color: #d7e447;
+}
+
+.Normal {
+  background-color: #ed9c19;
+}
+
+.image:hover {
+  opacity: 0;
+}
+
+.item-name {
+  font-weight: 700;
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 32.69px;
+}

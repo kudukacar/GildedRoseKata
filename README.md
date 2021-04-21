@@ -6,7 +6,10 @@ A code exercise for refactoring legacy code
 2. [Install JDK 15.0.2](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html)
 3. Clone repository by typing the following in the terminal: git clone https://github.com/kudukacar/GildedRoseKata.git
 4. In your terminal, navigate to the 'backend' folder
-5. Type the following in the terminal to run the tests: ./gradlew test
+5. Enter in the application.properties file your choice of username and password as follows:  
+    USERNAME=your username
+    PASSWORD=password=your password
+6. Type the following in the terminal to run the tests: ./gradlew test
 
 ## Run Frontend Tests
 1. [Install Node](https://nodejs.dev/learn/how-to-install-nodejs)
@@ -16,8 +19,12 @@ A code exercise for refactoring legacy code
 
 ## Running the Application locally
 1. Navigate to the 'backend' folder
-2. `./gradlew build` to update the .jar file with your changes
-3. `./gradlew bootRun` to run locally
-4. Navigate to the 'frontend' folder
-5. Type the following in the terminal: npm start
-6. See the application at:  http://localhost:3000/
+2. Follow step #5 in "Run Backend Tests" if you haven't already
+3. `./gradlew build` to update the .jar file with your changes
+4. `./gradlew bootRun` to run locally
+5. Navigate to the 'frontend' folder
+6. Create a .env file in the frontend folder and enter the username and password you created above as follows:
+    REACT_APP_USERNAME=your username
+    REACT_APP_PASSWORD=your password
+7. Type the following in the terminal: npm start
+8. See the application at:  http://localhost:3000/
