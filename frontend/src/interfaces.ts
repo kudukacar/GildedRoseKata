@@ -1,3 +1,6 @@
+import { ComponentProps, ComponentPropsWithRef } from "react";
+import { RouteComponentProps } from "react-router";
+
 interface Item {
   sellIn: number,
   quality: number, 
@@ -11,4 +14,11 @@ export interface ItemsProp {
 export interface ItemDisplay {
   image: string;
   name: string;
+}
+
+export interface CreateItemValues {
+  itemType: string,
+  name: string,
+  quality: number | null,
+  sellIn: number | null
 }
