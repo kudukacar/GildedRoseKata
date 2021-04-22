@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import Form from './form';
-import { CreateItemValues } from './interfaces';
-import { Redirect } from 'react-router-dom';
+import { CreateItemValues, CreateItemProps } from './interfaces';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-
-const CreateItem = (props: { component: typeof Form }) => {
+const CreateItem: React.FC<CreateItemProps & RouteComponentProps> = ({ Component, history }) => {
   const [createItemValues, setCreateItemValues] = useState<CreateItemValues>({
     itemType: "",
     name: "",
@@ -17,15 +15,16 @@ const CreateItem = (props: { component: typeof Form }) => {
     await fetch("/items", {
       method: 'POST',
       headers: new Headers({
-        "Authorization": `Basic ${btoa(`${process.env.REACT_APP_USERNAME}:${process.env.REACT_APP_PASSWORD}`)}`
+        "Authorization": `Basic ${btoa(`${process.env.REACT_APP_USERNAME}:${process.env.REACT_APP_PASSWORD}`)}`,
+        "Content-Type": 'application/json'
       }),
       body: JSON.stringify(createItemValues)
     });
-    return <Redirect to="/" />;
+    history.push("/");
   }
 
   return (
-    <props.component 
+    <Component 
       createItemValues={createItemValues}
       setCreateItemValues={setCreateItemValues}
       handleSubmit={handleSubmit}
@@ -33,4 +32,4 @@ const CreateItem = (props: { component: typeof Form }) => {
   )
 }
 
-export default CreateItem;
+export default withRouter(CreateItem);

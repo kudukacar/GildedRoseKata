@@ -33,7 +33,8 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 test('displays the form passed to it', () => {
-  render(<CreateItem component={TestingForm}/>)
+  const history = createMemoryHistory();
+  render(<Router history={history}><CreateItem Component={TestingForm}/></Router>)
   expect(screen.getByText(/Name/i)).toBeInTheDocument();
 })
 
@@ -41,7 +42,7 @@ test('click on submit redirects the user to the homepage', async () => {
   const history = createMemoryHistory();
   const { getByLabelText } = render(
       <Router history={history}>
-        <CreateItem component={TestingForm}/>
+        <CreateItem Component={TestingForm}/>
       </Router>
   );
   fireEvent.click(getByLabelText("submit"));

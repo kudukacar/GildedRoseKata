@@ -1,7 +1,13 @@
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(33.3333%, 1fr));
+  grid-template-columns: 217px 217px 217px;
+  grid-template-rows: minmax(213px);
   justify-content: space-between;
+  align-content: space-between;
+  padding: 10% 10%;
+  background-color: #111111;
+  min-height: 85.2vh;
+  grid-gap: 8rem;
 }
 
 .wrapper {
@@ -18,12 +24,21 @@
 .AgedBrie, .BackstagePasses, .Conjured, .Sulfuras, .Normal{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  align-items: center;
   line-height: 24.52px;
   letter-spacing: 0.15em;
   font-weight: 500;
   height: 213px;
   width: 217px; 
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-width: 152px;
+  height: 213px;
 }
 
 .AgedBrie {

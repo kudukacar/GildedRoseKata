@@ -1,5 +1,5 @@
-import { ComponentProps, ComponentPropsWithRef } from "react";
-import { RouteComponentProps } from "react-router";
+import Form from './form';
+import ItemsIndex from './items_index';
 
 interface Item {
   sellIn: number,
@@ -21,4 +21,12 @@ export interface CreateItemValues {
   name: string,
   quality: number | null,
   sellIn: number | null
+}
+
+export interface CreateItemProps {
+  Component: typeof Form
+}
+
+export interface FetchItemProps {
+  Component: typeof ItemsIndex
 }

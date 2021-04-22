@@ -1,5 +1,6 @@
 import React, { FormEventHandler } from 'react';
 import { CreateItemValues } from './interfaces';
+import './form.css';
 
 const Form = (props: { 
   createItemValues: CreateItemValues,
@@ -9,49 +10,59 @@ const Form = (props: {
   const { createItemValues, setCreateItemValues, handleSubmit } = props;
 
   return(
-    <form onSubmit={handleSubmit}>
-      <label>name:
-        <input
-          title="name"
-          type="text"
-          name="name"
-          value={createItemValues.name}
-          onChange={(e) => setCreateItemValues({...createItemValues, name: e.target.value})}
-          required
-        />
-      </label>
-      <label>item type:
-        <input
-          title="itemType"
-          type="text"
-          name="item type"
-          value={createItemValues.itemType}
-          onChange={(e) => setCreateItemValues({...createItemValues, itemType: e.target.value})}
-          required
-        />
-      </label>
-      <label>sell in:
-        <input
-          title="sellIn"
-          type="number"
-          name="sellin"
-          value={createItemValues.sellIn === null ? "" : createItemValues.sellIn}
-          onChange={(e)=> setCreateItemValues({...createItemValues, sellIn: e.target.value})}
-          required
-        />
-      </label>
-      <label>quality:
-        <input
-          title="quality"
-          type="number"
-          name="quality"
-          value={createItemValues.quality === null ? "" : createItemValues.quality}
-          onChange={(e) => setCreateItemValues({...createItemValues, quality: e.target.value})}
-          required
-        />
-      </label>
-      <input aria-label="submit" type="submit" name="submit"/>
-    </form>
+    <div className="form-wrapper">
+      <form onSubmit={handleSubmit} className="form">
+        <div>
+          <label>name:
+          </label>
+          <input
+                  title="name"
+                  type="text"
+                  name="name"
+                  value={createItemValues.name}
+                  onChange={(e) => setCreateItemValues({...createItemValues, name: e.target.value})}
+                  required
+                />
+        </div>
+        <div>
+          <label>item type:
+          </label>
+          <input
+              title="itemType"
+              type="text"
+              name="item type"
+              value={createItemValues.itemType}
+              onChange={(e) => setCreateItemValues({...createItemValues, itemType: e.target.value})}
+              required
+            />
+        </div>
+        <div>
+          <label>sell in:
+          </label>
+          <input
+              title="sellIn"
+              type="number"
+              name="sellin"
+              value={createItemValues.sellIn === null ? "" : createItemValues.sellIn}
+              onChange={(e)=> setCreateItemValues({...createItemValues, sellIn: e.target.value})}
+              required
+            />
+        </div>
+        <div>
+          <label>quality:
+          </label>
+          <input
+              title="quality"
+              type="number"
+              name="quality"
+              value={createItemValues.quality === null ? "" : createItemValues.quality}
+              onChange={(e) => setCreateItemValues({...createItemValues, quality: e.target.value})}
+              required
+            />
+        </div>
+        <input aria-label="submit" type="submit" name="submit" value="SUBMIT"/>
+      </form>
+    </div>
   )
 }
 

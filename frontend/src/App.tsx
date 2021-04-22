@@ -13,10 +13,10 @@ const App = () => {
         <Switch>
           <Route 
             exact path="/" 
-            component={() => <FetchItems component={ItemsIndex} />}/>
+            component={() => <FetchItems Component={ItemsIndex} />}/>
           <Route 
             exact path="/additem" 
-            component={() => <CreateItem component={Form} />}/>
+            component={() => <CreateItem Component={Form} />}/>
         </Switch>
       </Layout>
     </BrowserRouter>
