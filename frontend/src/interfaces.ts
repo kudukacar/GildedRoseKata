@@ -1,4 +1,5 @@
 import Form from './form';
+import ItemsIndex from './items_index';
 
 interface Item {
   sellIn: number,
@@ -24,4 +25,8 @@ export interface CreateItemValues {
 
 export interface CreateItemProps {
   Component: typeof Form
+}
+
+export interface FetchItemProps {
+  Component: typeof ItemsIndex
 }
