@@ -27,7 +27,7 @@ afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 test('loads and displays the fetched items', async () => {
-  render(<FetchItems component={ItemsIndexForTesting}/>)
+  render(<FetchItems Component={ItemsIndexForTesting}/>)
 
   await screen.findByText(/AgedBrie/i);
   expect(screen.getByText("AgedBrie")).toBeInTheDocument();

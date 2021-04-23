@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import { ItemsProp } from './interfaces';
-import ItemsIndex from './items_index';
+import { ItemsProp, FetchItemProps } from './interfaces';
 
-const FetchItems = (props: { component: typeof ItemsIndex }) => {
+const FetchItems: React.FC<FetchItemProps> = ({ Component }) => {
   const [items, setItems] = useState<ItemsProp>({
     items: []
   });
@@ -19,7 +18,7 @@ const FetchItems = (props: { component: typeof ItemsIndex }) => {
   })
 
   return (
-      <props.component itemsProp={items}/>
+      <Component itemsProp={items}/>
   )
 }
 

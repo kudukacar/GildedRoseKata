@@ -2,11 +2,25 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size:48px;
-  background-color: #FFFFF6;
   padding: 0% 10%;
   line-height: 65.38px;
   font-weight: 600;
   height: 117px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
+  background-color: #FFFFF6;
+
+}
+
+.navbar-left {
+  font-size:48px;
+}
+
+.navbar-right {
+  font-size: 24px;
+  padding: 12px 38px;
+  line-height: 33px;
+}
+
+.selected {
+  border: 3px solid #ff69b4;
 }

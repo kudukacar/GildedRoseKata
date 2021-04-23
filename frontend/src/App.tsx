@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Layout from './layout';
 import FetchItems from './fetch_items';
 import ItemsIndex from './items_index';
+import CreateItem from './create_item';
+import Form from './form';
 
 const App = () => {
   return (
@@ -11,7 +13,10 @@ const App = () => {
         <Switch>
           <Route 
             exact path="/" 
-            component={() => <FetchItems component={ItemsIndex} />}/>
+            component={() => <FetchItems Component={ItemsIndex} />}/>
+          <Route 
+            exact path="/additem" 
+            component={() => <CreateItem Component={Form} />}/>
         </Switch>
       </Layout>
     </BrowserRouter>

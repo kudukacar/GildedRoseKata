@@ -53,11 +53,13 @@ const ItemsIndex = (props: { itemsProp: ItemsProp }) => {
           alt={item.name} 
           className="image" 
           />
-        <ul className={item.name}>
-          <li className="item-name">{images.get(item.name)?.name}</li>
-          <li>Quality is {item.quality}</li>
-          <li>Sell in {item.sellIn} days</li>
-        </ul>
+        <div className={item.name}>
+          <ul className="item">
+            <li className="item-name">{images.get(item.name)?.name}</li>
+            <li>Quality is {item.quality}</li>
+            <li>Sell in {item.sellIn} days</li>
+          </ul>
+        </div>
       </div>
         )}
     </div>
