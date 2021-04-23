@@ -13,8 +13,7 @@ const Form = (props: {
     <div className="form-wrapper">
       <form onSubmit={handleSubmit} className="form">
         <div>
-          <label>name:
-          </label>
+          <label>name:</label>
           <input
                   title="name"
                   type="text"
@@ -25,8 +24,7 @@ const Form = (props: {
                 />
         </div>
         <div>
-          <label>item type:
-          </label>
+          <label>item type:</label>
           <input
               title="itemType"
               type="text"
@@ -37,8 +35,7 @@ const Form = (props: {
             />
         </div>
         <div>
-          <label>sell in:
-          </label>
+          <label>sell in:</label>
           <input
               title="sellIn"
               type="number"
@@ -49,8 +46,7 @@ const Form = (props: {
             />
         </div>
         <div>
-          <label>quality:
-          </label>
+          <label>quality:</label>
           <input
               title="quality"
               type="number"
