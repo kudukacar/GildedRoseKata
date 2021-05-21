@@ -10,14 +10,16 @@ A code exercise for refactoring legacy code
     USERNAME=your username
     PASSWORD=password=your password
 6. Type the following in the terminal to run the tests: ./gradlew test
-
+## Run Android Tests
+1. Follow steps 1-3 in 'Run Backend Tests' above
+2. In your terminal, navigate to the 'android' folder
+3. Type the following in the terminal to run the tests: ./gradlew test
 ## Run Frontend Tests
 1. [Install Node](https://nodejs.dev/learn/how-to-install-nodejs)
 2. Follow step #3 above if you haven't cloned the repository
 3. In your terminal, navigate to the 'frontend' folder
 4. Type the following in the terminal to run the tests:  npm test
-
-## Running the Application locally
+## Running the frontend Application locally
 1. Navigate to the 'backend' folder
 2. Follow step #5 in "Run Backend Tests" if you haven't already
 3. `./gradlew build` to update the .jar file with your changes

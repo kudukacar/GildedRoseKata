@@ -1,13 +1,18 @@
-backend/.gradle
-backend/build/
+*/.gradle
+*/build/
+*/captures
+*/.externalNativeBuild
+*/.cxx
+*/local.properties
+
 # Ignore Gradle GUI config
-backend/gradle-app.setting
+*/gradle-app.setting
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!backend/gradle-wrapper.jar
+!*/gradle-wrapper.jar
 
 # Cache of project
-backend/.gradletasknamecache
+*/.gradletasknamecache
 
 # dependencies
 frontend/node_modules
