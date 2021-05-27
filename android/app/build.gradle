@@ -10,11 +10,15 @@ if (authPropertiesFile.exists()) {
 }
 def username = authProperties['USERNAME']
 def password = authProperties['PASSWORD']
+def url = authProperties['URL']
 if (username == null) {
     username = System.getenv('USERNAME')
 }
 if (password == null) {
     password = System.getenv('PASSWORD')
+}
+if (url == null) {
+    url = System.getenv('URL')
 }
 
 android {
@@ -30,6 +34,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "USERNAME", username)
         buildConfigField("String", "PASSWORD", password)
+        buildConfigField("String", "URL", url)
     }
 
     buildTypes {
