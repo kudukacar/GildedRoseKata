@@ -4,7 +4,6 @@
 */.externalNativeBuild
 */.cxx
 */local.properties
-*/auth.properties
 
 # Ignore Gradle GUI config
 */gradle-app.setting

@@ -6,5 +6,5 @@ import retrofit2.http.Header
 
 interface ItemController {
     @GET("items")
-    fun getItems(@Header("Authorization") authorization: String): Call<List<Item>>
+    suspend fun getItems(@Header("Authorization") authorization: String): List<Item>
 }

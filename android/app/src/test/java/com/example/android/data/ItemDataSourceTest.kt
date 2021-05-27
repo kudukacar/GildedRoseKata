@@ -1,18 +1,17 @@
 package com.example.android.data
 
 import com.example.android.model.Item
+import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import org.json.JSONArray
 import org.junit.Test
 import org.junit.Assert.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class ItemDataSourceTest {
     @Test
-    fun itFetchesAllItems() {
+    fun itFetchesAllItems() = runBlocking {
         val server = MockWebServer()
         val items : List<Item> = listOf(Item(0,0, "Normal"))
         val expectedResponse = """[{"sellIn": "0", "quality": "0", "name" : "Normal"}]"""
@@ -27,9 +26,7 @@ class ItemDataSourceTest {
                 .create(ItemController::class.java)
 
         val itemDataSource = ItemDataSource(itemController)
-        val response = itemDataSource.fetchItems().execute().body()
+        val response = itemDataSource.fetchItems()
         assertEquals(items, response)
     }
-
-
 }
