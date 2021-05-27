@@ -17,15 +17,15 @@ class ItemDataSourceTest {
         val expectedResponse = """[{"sellIn": "0", "quality": "0", "name" : "Normal"}]"""
         server.enqueue(MockResponse().setBody(expectedResponse))
         server.start()
-        val itemController : ItemController =
+        val itemClient : ItemClient =
             Retrofit
                 .Builder()
                 .baseUrl(server.url("/"))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(ItemController::class.java)
+                .create(ItemClient::class.java)
 
-        val itemDataSource = ItemDataSource(itemController)
+        val itemDataSource = ItemDataSource(itemClient)
         val response = itemDataSource.fetchItems()
         assertEquals(items, response)
     }

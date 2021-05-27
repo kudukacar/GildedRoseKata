@@ -5,12 +5,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ItemNetwork {
-    val itemController by lazy {
+    val itemClient by lazy {
         Retrofit
             .Builder()
             .baseUrl(BuildConfig.URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(ItemController::class.java)
+            .create(ItemClient::class.java)
     }
 }

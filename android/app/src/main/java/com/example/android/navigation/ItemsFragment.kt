@@ -27,7 +27,7 @@ class ItemsFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentItemsBinding>(inflater,
             R.layout.fragment_items, container, false)
         val recyclerView = binding.recyclerView
-        val itemDataSource = ItemDataSource(ItemNetwork.itemController)
+        val itemDataSource = ItemDataSource(ItemNetwork.itemClient)
         lifecycleScope.launch {
             val items = itemDataSource.fetchItems()
             val itemImage = ItemImage
