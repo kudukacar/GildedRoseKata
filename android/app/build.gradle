@@ -5,7 +5,9 @@ plugins {
 
 def authPropertiesFile = rootProject.file("auth.properties")
 def authProperties = new Properties()
-authProperties.load(new FileInputStream(authPropertiesFile))
+if (authPropertiesFile.exists()) {
+    authProperties.load(new FileInputStream(authPropertiesFile))
+}
 
 android {
     compileSdkVersion 30
