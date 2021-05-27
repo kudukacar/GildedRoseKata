@@ -8,6 +8,14 @@ def authProperties = new Properties()
 if (authPropertiesFile.exists()) {
     authProperties.load(new FileInputStream(authPropertiesFile))
 }
+def username = authProperties['USERNAME']
+def password = authProperties['PASSWORD']
+if (username == null) {
+    username = System.getenv('USERNAME')
+}
+if (password == null) {
+    password = System.getenv('PASSWORD')
+}
 
 android {
     compileSdkVersion 30
@@ -20,8 +28,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "USERNAME", authProperties['USERNAME'])
-        buildConfigField("String", "PASSWORD", authProperties['PASSWORD'])
+        buildConfigField("String", "USERNAME", username)
+        buildConfigField("String", "PASSWORD", password)
     }
 
     buildTypes {
