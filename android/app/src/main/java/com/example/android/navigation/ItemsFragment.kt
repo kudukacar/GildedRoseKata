@@ -2,23 +2,24 @@ package com.example.android.navigation
 
 import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import com.example.android.R
 import com.example.android.adapter.ItemAdapter
 import com.example.android.adapter.ItemImage
 import com.example.android.data.ItemDataSource
 import com.example.android.data.ItemNetwork
 import com.example.android.databinding.FragmentItemsBinding
-import kotlinx.coroutines.launch
+import com.example.android.viewmodel.ItemViewModel
+import com.example.android.viewmodel.ItemViewModelFactory
 
 class ItemsFragment : Fragment() {
-
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,18 +29,21 @@ class ItemsFragment : Fragment() {
             R.layout.fragment_items, container, false)
         val recyclerView = binding.recyclerView
         val itemDataSource = ItemDataSource(ItemNetwork.itemClient)
-        lifecycleScope.launch {
-            val items = itemDataSource.fetchItems()
-            val itemImage = ItemImage
-                .Builder()
-                .addImage("AgedBrie", R.drawable.agedbrie)
-                .addImage("Normal", R.drawable.normal)
-                .addImage("Conjured", R.drawable.conjured)
-                .addImage("Sulfuras", R.drawable.sulfuras)
-                .addImage("BackstagePasses", R.drawable.backstage)
-                .build()
-            recyclerView.adapter = ItemAdapter(itemImage, items)
-        }
+        val itemImage = ItemImage
+            .Builder()
+            .addImage("AgedBrie", R.drawable.agedbrie)
+            .addImage("Normal", R.drawable.normal)
+            .addImage("Conjured", R.drawable.conjured)
+            .addImage("Sulfuras", R.drawable.sulfuras)
+            .addImage("BackstagePasses", R.drawable.backstage)
+            .build()
+        val itemViewModel : ItemViewModel by activityViewModels { ItemViewModelFactory(itemDataSource) }
+        itemViewModel.getItems().observe(this, { items ->
+            recyclerView.adapter = ItemAdapter(itemImage, items) { item ->
+                view?.findNavController()
+                    ?.navigate(ItemsFragmentDirections.actionItemsFragmentToItemFragment(item))
+            }
+        })
         return binding.root
     }
 }

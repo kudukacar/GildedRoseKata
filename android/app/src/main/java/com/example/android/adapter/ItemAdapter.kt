@@ -11,11 +11,12 @@ import com.example.android.model.Item
 
 class ItemAdapter(
     private val itemImage: ItemImage,
-    private val items: List<Item>
+    private val items: List<Item>,
+    private val listener: (Item) -> Unit
     ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val textView: TextView = view.findViewById(R.id.item_name)
-        val itemImage: ImageView = view.findViewById(R.id.item_image)
+        val imageView: ImageView = view.findViewById(R.id.item_image)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -27,7 +28,8 @@ class ItemAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = items[position]
         holder.textView.text = item.name
-        itemImage.getImage(item.name)?.let { holder.itemImage.setImageResource(it) }
+        itemImage.getImage(item.name)?.let { holder.imageView.setImageResource(it) }
+        holder.itemView.setOnClickListener { listener(item) }
     }
 
     override fun getItemCount() = items.size
