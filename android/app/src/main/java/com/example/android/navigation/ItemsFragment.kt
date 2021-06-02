@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.android.R
 import com.example.android.adapter.ItemAdapter
@@ -16,8 +16,7 @@ import com.example.android.adapter.ItemImage
 import com.example.android.data.ItemDataSource
 import com.example.android.data.ItemNetwork
 import com.example.android.databinding.FragmentItemsBinding
-import com.example.android.viewmodel.ItemViewModel
-import com.example.android.viewmodel.ItemViewModelFactory
+import kotlinx.coroutines.launch
 
 class ItemsFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
@@ -37,13 +36,13 @@ class ItemsFragment : Fragment() {
             .addImage("Sulfuras", R.drawable.sulfuras)
             .addImage("BackstagePasses", R.drawable.backstage)
             .build()
-        val itemViewModel : ItemViewModel by activityViewModels { ItemViewModelFactory(itemDataSource) }
-        itemViewModel.getItems().observe(this, { items ->
+        lifecycleScope.launch {
+            val items = itemDataSource.fetchItems()
             recyclerView.adapter = ItemAdapter(itemImage, items) { item ->
                 view?.findNavController()
                     ?.navigate(ItemsFragmentDirections.actionItemsFragmentToItemFragment(item))
             }
-        })
+        }
         return binding.root
     }
 }

@@ -17,13 +17,13 @@ class ItemFragment : Fragment() {
     ): View {
         val binding = DataBindingUtil.inflate<FragmentItemBinding>(inflater,
             R.layout.fragment_item, container, false)
-        val item_name = binding.itemDetailName
-        val item_quality = binding.itemDetailQuality
-        val item_sellin = binding.itemDetailSellin
+        val itemName = binding.itemDetailName
+        val itemQuality = binding.itemDetailQuality
+        val itemSellin = binding.itemDetailSellin
         val item: Item = ItemFragmentArgs.fromBundle(requireArguments()).itemArgument
-        item_name.text = item.name
-        item_quality.text = item.quality.toString()
-        item_sellin.text = item.sellIn.toString()
+        itemName.text = item.name.uppercase()
+        itemQuality.text = getString(R.string.item_quality, item.quality)
+        itemSellin.text = getString(R.string.item_sellin, item.sellIn)
         return binding.root
     }
 }
