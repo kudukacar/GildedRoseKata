@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".navigation.ItemFragment">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:paddingTop="40dp">
+        <TextView
+            android:id="@+id/item_detail_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:textSize="28sp" />
+        <TextView
+            android:id="@+id/item_detail_quality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_quality"
+            android:paddingTop="10dp"
+            android:textSize="28sp" />
+        <TextView
+            android:id="@+id/item_detail_sellin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_sellin"
+            android:paddingTop="10dp"
+            android:textSize="28sp" />
+    </LinearLayout>
+</layout>

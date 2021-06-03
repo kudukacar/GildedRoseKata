@@ -4,8 +4,8 @@ import com.example.android.model.Item
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
+import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.Assert.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

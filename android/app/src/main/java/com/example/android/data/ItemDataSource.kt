@@ -12,6 +12,6 @@ class ItemDataSource(private val itemClient: ItemClient) {
         val username = BuildConfig.USERNAME
         val password = BuildConfig.PASSWORD
         return itemClient
-                .getItems("Basic " + Base64.getEncoder().encodeToString("$username:$password".toByteArray()))
+            .getItems("Basic " + Base64.getEncoder().encodeToString("$username:$password".toByteArray()))
     }
 }
